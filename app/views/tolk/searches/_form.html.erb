@@ -1,0 +1,23 @@
+<%= form_tag tolk.search_path, :method => :get do %>
+  <div class="box">
+    <%= hidden_field_tag :tolk_locale, locale.name %>
+  
+    <p>
+      <%= scope_selector_for(@locale) %>
+    </p>
+  
+    <p>
+      phrase:
+      <%= text_field_tag :q, params[:q] %>
+    </p>
+  
+    <p>
+      within key:
+      <%= text_field_tag :k, params[:k] %>
+    </p>
+  
+    <p class="form-buttons">
+      <%= button t(:search) %>
+    </p>
+  </div>
+<% end %>
