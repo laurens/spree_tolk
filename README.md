@@ -10,7 +10,7 @@ Installation
 
 Add the following to your Gemfile
 
-    gem 'spree_tolk', :git => 'git://github.com/laurens/spree_tolk.git', :branch => 'master'
+    gem 'spree_tolk', :git => 'git://github.com/laurens/spree_tolk.git', :branch => '1-2-stable'
 
 And run
 
@@ -23,7 +23,17 @@ Copy & run the migrations:
 
 Mount the engine in your routes.rb:
 
-    mount SpreeTolk::Engine => "/admin/tolk", :as => :tolk
+    Spree::Core::Engine.routes.draw do
+        mount SpreeTolk::Engine => "/admin/tolk", :as => :tolk
+    end
+
+Add the spree_tolk stylesheet to admin/all.css
+
+    *= require admin/spree_tolk
+
+Add the spree_tolk javascript to admin/all.js
+
+    //= require admin/spree_tolk
 
 Usage
 =======
@@ -47,6 +57,7 @@ Show all the keys potentially containing HTML values and no _html postfix:
 Todo
 =======
 
+- [ ] Use a install generator
 - [ ] Fix the tests
 - [ ] Fix MimeType alias for Download of the YAML files (Currently use /admin/tolk/locales/de.yaml instead of de.yml to download)
 - [ ] Ensure Spree 1.3 compatibility
