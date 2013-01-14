@@ -17,7 +17,7 @@
   <p><%= t(:no_locales_yet) %></p>
 
 <% end %>
-<% content_for :sidebar do %>
+<%= content_for :sidebar do %>
   <%= form_for(Tolk::Locale.new) do |f| %>
   <div class="box">
     <h3><%= t(:add_locale) %></h3>
