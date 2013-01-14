@@ -20,8 +20,8 @@
      <%= form_for @locale do |locale_form| %>
       <table class="translations">
         <tr>
-          <th class="translation"><%= @locale.language_name -%></th>
-          <th class="key"><%= Tolk::Locale.primary_language_name -%></th>
+          <th class="translation"><h2><%= @locale.language_name -%></h2></th>
+          <th class="key"><h2><%= Tolk::Locale.primary_language_name -%></h2></th>
         </tr>
         <% @phrases.each do |phrase| %>
           <tr>
