@@ -2,4 +2,26 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  search: "Search"
+  translations: "Translations"
+  completed_translations: "Completed translations"
+  see_completed_translations: "See completed translations"
+  phrases_missing_translation: "Phrases missing translation"
+  see_phrases_missing_translation: "See phrases missing translation"
+  some_phrases_have_changed: "Some phrases have changed."
+  update_translations: "Update translations"
+  no_completed_traslations_for_this_locale: "There aren't any completed translations for this locale."
+  no_missing_or_updated_traslations_for_this_locale: "There aren't any missing or updated phrases that need translation."
+  locales: "Locales"
+  phrase_updated: "Updated"
+  phrase_original: "Original"
+  primary_locale_is: "Primary locale is %{language}"
+  no_locales_yet: "No locales yet."
+  tolk:
+    search_results: "Search results"
+  no_search_results: "No search results."
+  add_locale: "Add new locale"
+  missing_translations_for_locale: "Missing Translations for %{language} locale"
+  phrase: "Phrase"
+  within_key: "Within key"
+  

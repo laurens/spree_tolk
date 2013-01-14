@@ -1,14 +1,16 @@
-<h3 class="switch">Completed translations <span>(<%= link_to 'See phrases missing translation', @locale %>)</span></h3>
+<h1><%= t(:completed_translations) %></h1>
+
+<p><%= link_to t(:see_phrases_missing_translation), @locale %></p>
 
 <% if @locale.has_updated_translations? && action_name != 'updated' %>
-  <span class="notice">Some phrases have changed. <%= link_to "Update translations", tolk.updated_locale_path(@locale) %>.</span>
+  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), tolk.updated_locale_path(@locale) %>.</strong></p>
 <% end %>
 
-<div class="search">
+<%= content_for :sidebar do %>
   <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
-</div>
+<% end %>
 
-<div class="translations">
+<div class="tolk_translations">
 <% if @phrases.any? %>
   <%= form_for @locale do |locale_form| %>
         <table class="translations">
@@ -28,12 +30,12 @@
 
               <% if action_name == 'updated' %>
                 <div class="updated">
-                  <span class="key">Updated</span>
+                  <span class="key"><%= t('phrase_updated') %></span>
                   <%= format_i18n_value(phrase.translations.primary.text) -%>
                   <%= boolean_warning if phrase.translations.primary.boolean? -%>
                 </div>
                 <div class="original">
-                  <span class="key">Original</span>
+                  <span class="key"><%= t('phrase_original') %></span>
                   <%= format_i18n_value(phrase.translations.primary.previous_text) -%>
                 </div>
               <% else %>
@@ -48,14 +50,16 @@
       <% end %>
     </table>
     <div class="table_submit">
-      <p><%= locale_form.submit "Save changes" %></p>
+      <p class="form-buttons">
+        <%= button t(:update) %>
+      </p>
     </div>
     <div class="paginate">
       <%= paginate @phrases %>
     </div>
   <% end %>
 <% else %>
-  <p style="text-align: left">There aren't any completed translations for this locale.</p>
+  <p style="text-align: left"><%= t(:no_completed_traslations_for_this_locale) %></p>
   <p>&nbsp;</p>
 <% end %>
 </div>

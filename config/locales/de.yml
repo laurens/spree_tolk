@@ -1,0 +1,26 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  search: "Suche"
+  translations: "Übersetzungen"
+  completed_translations: "Abgeschlossene Übersetzungen"
+  see_completed_translations: "Abgeschlossene Übersetzungen anzeigen"
+  phrases_missing_translation: "Ausdrücke mit fehlenden Übersetzungen"
+  see_phrases_missing_translation: "Ausdrücke mit fehlenden Übersetzungen anzeigen"
+  some_phrases_have_changed: "Manche Ausdrücke wurden geändert."
+  update_translations: "Übersetzungen aktualiseren"
+  no_completed_traslations_for_this_locale: "Für diese Sprache gibt es keine abgeschlossenen Übersetzungen."
+  no_missing_or_updated_traslations_for_this_locale: "Für diese Sprache gibt es keine fehlenden oder aktualisierten Ausdrücke."
+  locales: "Sprachen"
+  phrase_updated: "Aktualisiert"
+  phrase_original: "Original"
+  primary_locale_is: "Hauptsprache ist %{language}"
+  no_locales_yet: "Noch keine Sprachen vorhanden."
+  tolk:
+    search_results: "Suchergebnisse"
+  no_search_results: "Keine Suchergebnisse."
+  add_locale: "Neue Sprache hinzufügen"
+  missing_translations_for_locale: "Fehlende Übersetzungen für %{language}"
+  phrase: "Ausdruck"
+  within_key: "In Schlüssel"

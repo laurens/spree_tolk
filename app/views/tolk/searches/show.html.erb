@@ -1,17 +1,18 @@
-<%= content_for :sidebar do %>
-  <h3 class="search"><h3><%= t(:search) %></h3></h3>
+<h1><%= t('tolk.search_results') %></h1>
 
+<p class="search_exits">
+  <%= link_to t(:phrases_missing_translation), @locale %>
+  | 
+  <%= link_to t(:completed_translations), tolk.all_locale_path(@locale) %>
+</p>
+
+
+<%= content_for :sidebar do %>
   <%= render :partial => "form", :locals => { :locale => @locale } %>
-  
-  <p class="search_exits">
-    <%= link_to "Phrases missing translation", @locale %>
-    &nbsp;
-    <%= link_to "Completed translations", tolk.all_locale_path(@locale) %>
-  </p>
 <% end %>
 
 
-<div class="translations">
+<div class="tolk_translations">
   <% if @phrases.any? %>
      <%= form_for @locale do |locale_form| %>
       <table class="translations">
@@ -46,7 +47,7 @@
       </table>
       <div class="table_submit">
         <p class="form-buttons">
-          <%= button t(:save) %>
+          <%= button t(:update) %>
         </p>
       </div>
     <% end %>
@@ -54,6 +55,6 @@
       <%= paginate @phrases %>
     </div>
   <% else %>
-    <p style="text-align: left">No search results.</p>
+    <p style="text-align: left"><%= t(:no_search_results) %></p>
   <% end %>
 </div>

@@ -2,17 +2,20 @@
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= tolk.locale_path(@locale, :format => 'atom') -%>" />
 <% end %>
 
-<h3 class="switch">Phrases missing translation (<%= @locale.count_phrases_without_translation %>) <span>(<%= link_to 'See completed translations', tolk.all_locale_path(@locale) %>)</span></h3>
+<h1><%= t(:phrases_missing_translation) %> (<%= @locale.count_phrases_without_translation %>)</h1>
+
+<p><%= link_to t(:see_completed_translations), tolk.all_locale_path(@locale) %></p>
 
 <% if @locale.has_updated_translations? && action_name != 'updated' %>
-  <span class="notice">Some phrases have changed. <%= link_to "Update translations", tolk.updated_locale_path(@locale) %>.</span>
+  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), tolk.updated_locale_path(@locale) %>.</strong></p>
 <% end %>
 
-<div class="search">
-  <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
-</div>
 
-<div class="translations">
+<%= content_for :sidebar do %>
+  <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
+<% end %>
+
+<div class="tolk_translations">
   <% if @phrases.any? %>
      <%= form_for @locale do |locale_form| %>
       <table class="translations">
@@ -43,7 +46,7 @@
       </table>
       <div class="table_submit">
         <p class="form-buttons">
-          <%= button t(:save) %>
+          <%= button t(:update) %>
         </p>
       </div>
     <% end %>
@@ -51,7 +54,7 @@
       <%= paginate @phrases %>
     </div>
   <% else %>
-    <p style="text-align: left">There aren't any missing or updated phrases that need translation.</p>
+    <p style="text-align: left"><%= t(:no_missing_or_updated_traslations_for_this_locale) %></p>
     <p>&nbsp;</p>
   <% end %>
 </div>

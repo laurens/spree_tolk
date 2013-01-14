@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "Missing Translations for #{@locale.language_name} locale"
+  feed.title I18n.t(:missing_translations_for_locale, :language => @locale.language_name)
 
   @phrases.each do |phrase|
     feed.entry(phrase, :url => tolk_locale_url(@locale)) do |entry|
