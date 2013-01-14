@@ -1,3 +1,18 @@
 /*
  *= require admin/spree_core
 */
+
+div.tolk_translations span.key {
+  font-family: monospace;
+  display: block;
+  font-size: 1.2em;
+}
+
+div.tolk_translations td.translation, div.tolk_translations td.phrase {
+  width: 45%;
+}
+
+div.tolk_translations td.translation textarea {
+  width: 90%;
+  height: auto;
+}
