@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.description = 'Fork of tolk integrated intro Spree namespace'
   s.required_ruby_version = '>= 1.9'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Laurens Nienhaus'
+  s.email     = 'l.nienhaus@gmail.com'
+  s.homepage  = 'http://github.com/laurens/spree_tolk'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
