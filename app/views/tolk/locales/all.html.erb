@@ -22,12 +22,13 @@
         <% if phrase.translations.primary %>
           <tr>
             <td class="translation">
+              <label><%= phrase.key %></label><br />
               <%= hidden_field_tag :"translations[][id]", phrase.translation.id %>
               <%= hidden_field_tag :"translations[][locale_id]", phrase.translation.locale_id %>
               <%= text_area_tag :"translations[][text]", format_i18n_text_area_value(phrase.translation.text), :class => 'locale' %>
             </td>
             <td class="phrase">
-
+              <label><%= phrase.key %></label><br />
               <% if action_name == 'updated' %>
                 <div class="updated">
                   <span class="key"><%= t('phrase_updated') %></span>
@@ -42,8 +43,6 @@
                 <%= format_i18n_value(phrase.translations.primary.text) -%>
                 <%= boolean_warning if phrase.translations.primary.boolean? -%>
               <% end %>
-
-              <span class="key"><%= phrase.key %></span>
             </td>
           </tr>
         <% end %>
