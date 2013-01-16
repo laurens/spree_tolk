@@ -149,6 +149,10 @@ module Tolk
     def to_param
       name.parameterize
     end
+    
+    def to_sym
+      name.to_sym
+    end
 
     def primary?
       name == self.class.primary_locale_name
