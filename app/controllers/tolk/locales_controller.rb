@@ -33,9 +33,6 @@ module Tolk
     end
 
     def create
-      name = params[:tolk_locale][:name]
-      params[:tolk_locale][:language_name] = Tolk.config.mapping[name]
-
       Tolk::Locale.create!(params[:tolk_locale])
       redirect_to :action => :index
     end
