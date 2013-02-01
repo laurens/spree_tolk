@@ -5,6 +5,8 @@ Edit your translations through the [Spree](http://github.com/spree/spree) Admin 
 
 This is a fork of [Tolk](http://github.com/tolk/tolk) 1.3.4 as a Spree 1.2 extension. 
 
+Note: Still under development and needs some overhaul. Pull Requests welcome.
+
 Installation
 =======
 
@@ -46,7 +48,7 @@ Generate yml files for all the locales defined in Tolk:
 
     $ bundle exec rake tolk:dump_all
 
-Imports data all non default locale yml files to Tolk:
+Imports data from all non default locale yml files to Tolk:
 
     $ bundle exec rake tolk:import
 
