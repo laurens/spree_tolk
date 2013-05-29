@@ -1,23 +1,23 @@
 <% content_for :head do %>
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= tolk.locale_path(@locale, :format => 'atom') -%>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= admin_locale_path(@locale, :format => 'atom') -%>" />
 <% end %>
 
 <h1><%= t(:phrases_missing_translation) %> (<%= @locale.count_phrases_without_translation %>)</h1>
 
-<p><%= link_to t(:see_completed_translations), tolk.all_locale_path(@locale) %></p>
+<p><%= link_to t(:see_completed_translations), all_admin_locale_path(@locale) %></p>
 
 <% if @locale.has_updated_translations? && action_name != 'updated' %>
-  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), tolk.updated_locale_path(@locale) %>.</strong></p>
+  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), updated_admin_locale_path(@locale) %>.</strong></p>
 <% end %>
 
 
 <% content_for :sidebar do %>
-  <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
+  <%= render :partial => "search_form", :locals => { :locale => @locale } %>
 <% end %>
 
 <div class="tolk_translations">
   <% if @phrases.any? %>
-     <%= form_for @locale do |locale_form| %>
+     <%= form_for [:admin, @locale] do |locale_form| %>
       <table class="translations">
         <tr>
           <th class="translation"><h2><%= @locale.language_name -%></h2></th>
@@ -27,7 +27,7 @@
           <tr>
             <% translation = Tolk::Translation.new(:locale => @locale, :phrase => phrase) %>
             <td class="translation">
-              <label title="<%= phrase.key %>"><%= truncate(phrase.key, :length => 100) %></label><br />
+              <label><%= phrase.key %></label><br />
               <%= hidden_field_tag :"translations[][id]", translation.id, :id => "#{translation.object_id}_id" %>
               <%= hidden_field_tag :"translations[][phrase_id]", phrase.id, :id => "#{translation.object_id}_phrase_id" %>
               <%= hidden_field_tag :"translations[][locale_id]", translation.locale_id, :id => "#{translation.object_id}_locale_id" %>

@@ -1,20 +1,20 @@
 <h1><%= t('tolk.search_results') %></h1>
 
 <p class="search_exits">
-  <%= link_to t(:phrases_missing_translation), @locale %>
+  <%= link_to t(:phrases_missing_translation), [:admin, @locale] %>
   | 
-  <%= link_to t(:completed_translations), tolk.all_locale_path(@locale) %>
+  <%= link_to t(:completed_translations), all_admin_locale_path(@locale) %>
 </p>
 
 
 <% content_for :sidebar do %>
-  <%= render :partial => "form", :locals => { :locale => @locale } %>
+  <%= render :partial => "search_form", :locals => { :locale => @locale } %>
 <% end %>
 
 
 <div class="tolk_translations">
   <% if @phrases.any? %>
-     <%= form_for @locale do |locale_form| %>
+     <%= form_for [:admin, @locale] do |locale_form| %>
       <table class="translations">
         <tr>
           <th class="translation"><h2><%= @locale.language_name -%><h2></th>

@@ -4,7 +4,7 @@
   <ul class="locales clearfix">
     <% @locales.each do |locale| %>
       <li>
-        <%= link_to locale.language_name, locale %>
+        <%= link_to locale.language_name, [:admin, locale] %>
         <% missing_count = locale.count_phrases_without_translation %>
         <% if missing_count > 0 %>
           <span class="missing_translations"><%= locale.count_phrases_without_translation %></span>
@@ -18,7 +18,7 @@
 
 <% end %>
 <%= content_for :sidebar do %>
-  <%= form_for(Tolk::Locale.new) do |f| %>
+  <%= form_for([:admin, Tolk::Locale.new]) do |f| %>
   <div class="box">
     <h3><%= t(:add_locale) %></h3>
     

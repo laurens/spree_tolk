@@ -1,18 +1,18 @@
 <h1><%= t(:completed_translations) %></h1>
 
-<p><%= link_to t(:see_phrases_missing_translation), @locale %></p>
+<p><%= link_to t(:see_phrases_missing_translation), [:admin, @locale] %></p>
 
 <% if @locale.has_updated_translations? && action_name != 'updated' %>
-  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), tolk.updated_locale_path(@locale) %>.</strong></p>
+  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), updated_admin_locale_path(@locale) %>.</strong></p>
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
+  <%= render :partial => "search_form", :locals => { :locale => @locale } %>
 <% end %>
 
 <div class="tolk_translations">
 <% if @phrases.any? %>
-  <%= form_for @locale do |locale_form| %>
+  <%= form_for [:admin, @locale] do |locale_form| %>
         <table class="translations">
       <tr>
         <th class="translation"><h2><%= @locale.language_name -%></h2></th>

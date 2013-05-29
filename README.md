@@ -12,35 +12,20 @@ Installation
 
 Add the following to your Gemfile
 
-    gem 'spree_tolk', :git => 'git://github.com/laurens/spree_tolk.git', :branch => '1-2-stable'
+    gem 'spree_tolk', :git => 'git://github.com/laurens/spree_tolk.git', :branch => '1-5-stable'
 
-And run
+Run the install generator
 
-    $ bundle install
+    $ bundle exec rails g spree_tolk:install
 
-Copy & run the migrations:
-
-    $ bundle exec rake railties:install:migrations FROM=spree_tolk
-    $ bundle exec rake db:migrate
-
-Mount the engine in your routes.rb:
-
-    Spree::Core::Engine.routes.draw do
-        mount SpreeTolk::Engine => "/admin/tolk", :as => :tolk
-    end
-
-Add the spree_tolk stylesheet to admin/all.css
-
-    *= require admin/spree_tolk
-
-Add the spree_tolk javascript to admin/all.js
-
-    //= require admin/spree_tolk
+This will add spree_tolk to your admin javascripts and stylesheets and optionally migrate the database.
 
 Usage
 =======
 
-Sync Tolk with the default locale's yml file:
+## Rake tasks
+
+Sync Tolk with the default locale’s yml file:
 
     $ bundle exec rake tolk:sync
 
@@ -56,10 +41,20 @@ Show all the keys potentially containing HTML values and no _html postfix:
 
     $ bundle exec rake tolk:html_keys
 
+## Admin Interface
+
+spree_tolk adds a tab called „Locales“ to the spree admin interface.
+
+In order to download the yaml file, append `.yaml` to the locale path like
+
+http://example.com/spree/admin/locales/de.yaml
+
+Be sure to double check the output since Tolk messes up the formatting of some YAML keys in some cases, which you will have to fix manually.
+
+
 Todo
 =======
 
-- [ ] Use a install generator
 - [ ] Fix the tests
 - [ ] Fix MimeType alias for Download of the YAML files (Currently use /admin/tolk/locales/de.yaml instead of de.yml to download)
 - [ ] Ensure Spree 1.3 compatibility

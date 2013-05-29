@@ -2,9 +2,9 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_tolk'
-  s.version     = '1.2.0'
-  s.summary     = 'Spree engine providing web interface for managing i18n yaml files'
-  s.description = 'Fork of tolk integrated intro Spree namespace'
+  s.version     = '1.5.0'
+  s.summary     = 'Spree 1.2 extension providing a web interface for managing i18n yaml files'
+  s.description = 'spree_tolk Spree extension providing web interface for managing i18n yaml files. It is based on a fork of the tolk project'
   s.required_ruby_version = '>= 1.9'
 
   s.author    = 'Laurens Nienhaus'
