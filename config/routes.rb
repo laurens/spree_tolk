@@ -8,6 +8,8 @@ Spree::Core::Engine.routes.draw do
       
       collection do
         get :search
+        post :dump_all # todo add link to this action in views
+        get :stats # todo add link to this action in views
       end
     end
   end

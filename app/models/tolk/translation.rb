@@ -17,7 +17,6 @@ module Tolk
 
     attr_accessible :phrase_id, :locale_id, :text, :primary_updated, :previous_text, :locale, :phrase
 
-    attr_accessor :force_set_primary_update
     before_save :set_primary_updated
 
     before_save :set_previous_text
@@ -60,6 +59,7 @@ module Tolk
           self.explicit_nil = true
           nil
         end
+        value = value.strip if value.is_a?(String)
         super unless value == text
       else
         super unless value.to_s == text
@@ -114,7 +114,7 @@ module Tolk
       if primary_translation.present?
         if self.text.is_a?(String) && !primary_translation.text.is_a?(String)
           self.text = begin
-            YAML.load(self.text.strip)
+            YAML.safe_load(self.text.strip)
           rescue ArgumentError
             nil
           end
@@ -138,7 +138,7 @@ module Tolk
     end
 
     def set_primary_updated
-      self.primary_updated = self.force_set_primary_update ? true : false
+      self.primary_updated = false
       true
     end
 

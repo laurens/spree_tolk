@@ -3,7 +3,7 @@ SpreeTolk
 
 Edit your translations through the [Spree](http://github.com/spree/spree) Admin Area. 
 
-This is a fork of [Tolk](http://github.com/tolk/tolk) 1.3.4 as a Spree 1.2 extension. 
+This is a fork of [Tolk](http://github.com/tolk/tolk) 1.3.9 as a Spree 1.2 extension. 
 
 Note: Still under development and needs some overhaul. Pull Requests welcome.
 
@@ -18,7 +18,7 @@ Run the install generator
 
     $ bundle exec rails g spree_tolk:install
 
-This will add spree_tolk to your admin javascripts and stylesheets and optionally migrate the database.
+The install generator will add database migrations and admin stylesheets/javascripts to your spree app.
 
 Usage
 =======
@@ -29,7 +29,7 @@ Sync Tolk with the default locale’s yml file:
 
     $ bundle exec rake tolk:sync
 
-Generate yml files for all the locales defined in Tolk:
+This will generate yml files for all the locales defined in Tolk and put them into `#{Rails.root}/config/locales/`:
 
     $ bundle exec rake tolk:dump_all
 

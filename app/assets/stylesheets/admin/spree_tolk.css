@@ -12,7 +12,26 @@ div.tolk_translations td.translation, div.tolk_translations td.phrase {
   width: 45%;
 }
 
+div.tolk_translations td.actions {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  
+  
+}
+
 div.tolk_translations td.translation textarea {
-  width: 90%;
+  width: 95%;
   height: auto;
+}
+
+div.tolk_translations table.translations .original {
+  display: none;
+}
+
+div.tolk_translations table.translations .interpolation {
+  color: #2fadcf;
+  font-family: Courier;
+  font-weight: bold;
+  cursor: pointer;
 }
