@@ -5,7 +5,7 @@
 div.tolk_translations span.key {
   font-family: monospace;
   display: block;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 div.tolk_translations td.translation, div.tolk_translations td.phrase {
@@ -16,8 +16,6 @@ div.tolk_translations td.actions {
   text-align: center;
   font-weight: bold;
   font-size: 1.3em;
-  
-  
 }
 
 div.tolk_translations td.translation textarea {
@@ -25,13 +23,30 @@ div.tolk_translations td.translation textarea {
   height: auto;
 }
 
-div.tolk_translations table.translations .original {
+div.tolk_translations table.translations .original textarea {
   display: none;
 }
 
-div.tolk_translations table.translations .interpolation {
+div.tolk_translations table.translations .interpolation, 
+div.tolk_translations table.translations .carriage_return, 
+div.tolk_translations table.translations .warning {
+  cursor: help;
+}
+
+div.tolk_translations table.translations .interpolation, 
+div.tolk_translations table.translations .carriage_return {
   color: #2fadcf;
-  font-family: Courier;
+  font-family: Courier, monospace;
   font-weight: bold;
-  cursor: pointer;
+}
+
+div.tolk_translations table.translations .carriage_return:before {
+  content: "¶";
+  font-size: 1.2em;
+}
+
+div.tolk_translations table.translations .warning {
+  display: none;
+  font-weight: bold;
+  color: orange;
 }

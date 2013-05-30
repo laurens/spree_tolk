@@ -2,7 +2,17 @@ module Spree
   module Admin
     module LocalesHelper
       def format_i18n_value(value)
-        h(yaml_value(value)).gsub(/\n/, '<span class="carriage_return">&crarr;</span><br />').html_safe
+        value = h(yaml_value(value))
+        value = highlight_linebreaks(value)
+        value = highligh_interpolations(value)
+      end
+
+      def highlight_linebreaks(value)
+        value.gsub(/\n/, '<span class="carriage_return" title="Line break"><br /></span>').html_safe
+      end
+
+      def highligh_interpolations(value)
+        value.gsub(/%{\w+}/, '<span class="interpolation" title="Leave this word untranslated">\0</span>').html_safe
       end
 
       def format_i18n_text_area_value(value)
