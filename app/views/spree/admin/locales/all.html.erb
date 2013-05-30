@@ -1,21 +1,22 @@
 <h1><%= t(:completed_translations) %></h1>
 
-<p><%= link_to t(:see_phrases_missing_translation), @locale %></p>
+<p><%= link_to t(:see_phrases_missing_translation), [:admin, @locale] %></p>
 
 <% if @locale.has_updated_translations? && action_name != 'updated' %>
-  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), tolk.updated_locale_path(@locale) %>.</strong></p>
+  <p><strong><%= t(:some_phrases_have_changed) %> <%= link_to t(:update_translations), updated_admin_locale_path(@locale) %>.</strong></p>
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= render :partial => "tolk/searches/form", :locals => { :locale => @locale } %>
+  <%= render :partial => "search_form", :locals => { :locale => @locale } %>
 <% end %>
 
 <div class="tolk_translations">
 <% if @phrases.any? %>
-  <%= form_for @locale do |locale_form| %>
+  <%= form_for [:admin, @locale] do |locale_form| %>
         <table class="translations">
       <tr>
         <th class="translation"><h2><%= @locale.language_name -%></h2></th>
+        <th class="actions"></th>
         <th class="key"><h2><%= Tolk::Locale.primary_language_name -%></h2></th>
       </tr>
       <% @phrases.each do |phrase| %>
@@ -26,6 +27,10 @@
               <%= hidden_field_tag :"translations[][id]", phrase.translation.id %>
               <%= hidden_field_tag :"translations[][locale_id]", phrase.translation.locale_id %>
               <%= text_area_tag :"translations[][text]", format_i18n_text_area_value(phrase.translation.text), :class => 'locale' %>
+            </td>
+            <td class="actions">
+              <a class="copy" href="#" tabindex="-1" title="Copy original translation">&larr;</a><br>
+              <span class="warning" title="Interpolation keys don't match">⚠</span>
             </td>
             <td class="phrase">
               <label><%= phrase.key %></label><br />
@@ -40,8 +45,13 @@
                   <%= format_i18n_value(phrase.translations.primary.previous_text) -%>
                 </div>
               <% else %>
-                <%= format_i18n_value(phrase.translations.primary.text) -%>
-                <%= boolean_warning if phrase.translations.primary.boolean? -%>
+                <div class="original">
+                  <%= format_i18n_value(phrase.translations.primary.text) -%>
+                </div>
+                <div class="value">
+                  <%= format_i18n_value(phrase.translations.primary.text) -%>
+                </div>
+                  <%= boolean_warning if phrase.translations.primary.boolean? -%>
               <% end %>
             </td>
           </tr>

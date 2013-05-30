@@ -44,7 +44,7 @@ module Tolk
           'nl'    => 'Dutch',
           'no'    => 'Norwegian',
           'pl'    => 'Polish',
-          'pt-br' => 'Portuguese (Brazilian)',
+          'pt-BR' => 'Portuguese (Brazilian)',
           'pt-PT' => 'Portuguese (Portugal)',
           'ro'    => 'Romanian',
           'ru'    => 'Russian',

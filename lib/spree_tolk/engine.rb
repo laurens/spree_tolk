@@ -1,5 +1,8 @@
 module SpreeTolk
   class Engine < Rails::Engine
+    SafeYAML::OPTIONS[:default_mode] = :safe
+    SafeYAML::OPTIONS[:deserialize_symbols] = true
+
     require 'spree/core'
     isolate_namespace Tolk
     engine_name 'spree_tolk'

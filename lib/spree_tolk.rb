@@ -1,6 +1,6 @@
 require 'spree_core'
 
-require 'ya2yaml'
+require 'safe_yaml'
 require 'tolk/config'
 require 'spree_tolk/engine'
 require 'tolk/sync'
